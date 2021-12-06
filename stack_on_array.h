@@ -19,19 +19,6 @@ public:
 
     void print(std::ostream &out);
 
-    stack_on_array &operator=(const stack_on_array &stack) {
-        if (counter_ > 0) {
-            counter_ = 0;
-            delete[] stack_;
-        }
-        stack_ = new T[stack.counter_];
-        counter_ = stack.counter_;
-        for (int i = 0; i < counter_; ++i) {
-            stack_[i] = stack.stack_[i];
-        }
-        return *this;
-    }
-
     stack_on_array() : stack_(nullptr), counter_(0) {}
 
     stack_on_array(const stack_on_array &stack) {
@@ -48,6 +35,18 @@ public:
 private:
     T *stack_;
     int counter_;
+    stack_on_array &operator=(const stack_on_array &stack) {
+        if (counter_ > 0) {
+            counter_ = 0;
+            delete[] stack_;
+        }
+        stack_ = new T[stack.counter_];
+        counter_ = stack.counter_;
+        for (int i = 0; i < counter_; ++i) {
+            stack_[i] = stack.stack_[i];
+        }
+        return *this;
+    }
 };
 
 template<typename T>
