@@ -11,7 +11,7 @@ public:
 
     T pop();
 
-    T* head();
+    T *head();
 
     int getCounter();
 
@@ -32,10 +32,6 @@ public:
         if (counter_ > 0) delete[] stack_;
     }
 
-private:
-    T *stack_;
-    int counter_;
-
     stack_on_array &operator=(const stack_on_array &stack) {
         if (counter_ > 0) {
             counter_ = 0;
@@ -48,6 +44,12 @@ private:
         }
         return *this;
     }
+
+private:
+    T *stack_;
+    int counter_;
+
+
 };
 
 template<typename T>
@@ -71,7 +73,7 @@ T stack_on_array<T>::pop() {
 }
 
 template<typename T>
-T* stack_on_array<T>::head() {
+T *stack_on_array<T>::head() {
     if (counter_ == 0) return 0;
     return stack_ + counter_ - 1;
 }
@@ -88,7 +90,7 @@ bool stack_on_array<T>::isEmpty() {
 
 template<typename T>
 void stack_on_array<T>::print(std::ostream &out) {
-    for (int i = 0; i < counter_; ++i) {
+    for (int i = counter_ - 1; i > -1; --i) {
         out << stack_[i] << " ";
     }
 }

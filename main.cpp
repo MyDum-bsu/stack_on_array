@@ -12,5 +12,9 @@ int main() {
     std::cout << stack.pop() << std::endl;
     std::cout << stack.getCounter() << std::endl;
     std::cout << stack.isEmpty();
+    stack_on_array<int> kez;
+    kez = stack;
+    std::cout << std::endl;
+    kez.print(std::cout);
     return 0;
 }
