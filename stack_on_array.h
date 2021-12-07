@@ -45,6 +45,26 @@ public:
         return *this;
     }
 
+    void operator<<(T element) {
+        push(element);
+    }
+
+    void operator>>(T &to) {
+        to = *head();
+        pop();
+    }
+
+    bool operator<(stack_on_array<T> stack) {
+        return counter_ < stack.counter_;
+    }
+
+    bool operator==(stack_on_array<T> stack) {
+        return counter_ == stack.counter_;
+    }
+
+    T operator[](int t) {
+        return stack_[t];
+    }
 private:
     T *stack_;
     int counter_;
@@ -68,8 +88,9 @@ void stack_on_array<T>::push(T element) {
 template<typename T>
 T stack_on_array<T>::pop() {
     if (counter_ == 0) return 0;
+    int temp = counter_;
     counter_--;
-    return stack_[counter_];
+    return stack_[temp - 1];
 }
 
 template<typename T>
