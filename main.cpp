@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stack_on_array.h"
+
 int main() {
     stack_on_array<int> stack;
     stack.push(2);
